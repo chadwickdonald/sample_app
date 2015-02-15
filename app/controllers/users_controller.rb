@@ -6,13 +6,13 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
-    #Rails.logger.info "--@user: #{@user.inspect}"
   end
 
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		# handle save
+      flash[:success] = "Welcome to the sample app!"
+  		redirect_to @user
   	else
   		render 'new'  
   	end
